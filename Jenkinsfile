@@ -1,4 +1,4 @@
 node {
 
-sh 'hello world'
+echo 'Hello World'
 }
