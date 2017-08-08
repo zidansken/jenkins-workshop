@@ -60,10 +60,10 @@ Before this task, we expect you to have been through the basic Jenkins material 
 * Generate a new SSH key that will be used by Jenkins to prove itself to GitHub, by following the first part of [Generating a new SSH key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
 * Add the public-key to your GitHub account by following [Adding a new SSH key to your GitHub account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 * Add the private-key to Jenkins, by opening your Jenkins server, and clicking `Credentials`
-  * Click `(global)` and `Add credentials`
-      * Choose Kind "SSH Username with private key", write the details used to generate the keypair and paste the contents from the private-key you generated in the first step, (default ~/.ssh/id_rsa)
+* Click `(global)` and `Add credentials`
+* Choose Kind "SSH Username with private key", write the details used to generate the keypair and paste the contents from the private-key you generated in the first step, (default ~/.ssh/id_rsa)
       write the passphrase you chose.
-      * Save it.
+* Save it.
 
 ### 0.5 Fork the repository
 * Fork of the [Gilded Rose repository](https://github.com/praqma-training/gildedrose) to obtain your own version of the code.
@@ -170,13 +170,30 @@ Make three stages that does the following:
 
 Run this to see that it's working. The archiving part can be verified by looking for a small blue arrow next to the build number in the overview. Make sure you get your Jar file with you there.
 
-### 7. Parallel and stashing
+### 7. Archiving
 We also need to get the javadoc generated for the project.
 
 Fortunately that can be done with a small `mvn site` command.
 
 * Create another step called `Javadoc` where you execute the above command, and archive the result in the `target/javadoc` folder.
+* Archive the `target/gildedrose-*.jar` as well
 
+### 8. Dockerize this
+We 
+
+### 9. Multibranch pipeline
+There is a file in this repository called Jenkinsfile
+
+Right now it only has a dumb `hello world`
+
+* Take your pipeline script, and replace the files content with it.
+* Replace the git command with `checkout scm`. Multibranch knows where it gets triggered from.
+* Push that back to the repository
+* Create a new job of the `multibranch pipeline` type, and configure that to take from your repository.
+* Trigger it to see that it works.
+* Make a new branch locally, and push it up to GitHub to see that it automatically makes a new pipeline for you as well.
+
+### Xtra. Parallel and stashing
 Now we have two processes that actually can be run in parallel. The `build` and `javadoc` steps both take in the sourcecode and produces artifacts. So lets try to run them in parallel.
 
 > This assignment is loosely formulated, so you need to [look things up yourself](https://jenkins.io/doc/pipeline/steps/) in order to complete this one
@@ -202,18 +219,6 @@ stage('parallel'){
 * Stash the results instead of archiving. Call them `jar` and `javadoc`
 * Unstash them in the `Results` step in the end where you archive them.
 
-
-### Multibranch pipeline
-There is a file in this repository called Jenkinsfile
-
-Right now it only has a dumb `hello world`
-
-* Take your pipeline script, and replace the files content with it.
-* Replace the git command with `checkout scm`. Multibranch knows where it gets triggered from.
-* Push that back to the repository
-* Create a new job of the `multibranch pipeline` type, and configure that to take from your repository.
-* Trigger it to see that it works.
-* Make a new branch locally, and push it up to GitHub to see that it automatically makes a new pipeline for you as well.
-
+#DONE!
 **That's it!** You rock at this!
 If you have more time, and want to make a real pipeline with pretested integration, then read our story about [pipeline vs old fashioned jobs](http://www.praqma.com/stories/jenkins-pipeline/) and try to incorporate the script into your own pipeline!
