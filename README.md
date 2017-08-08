@@ -108,7 +108,7 @@ As a team, you do not want to go in and manually build the project every time yo
 
 * Go into `Configuration` again and select the `Poll SCM` checkbox
 * Type in `* * * * */1` to tell Jenkins to check for new commits every minute.
-* Make a new commit, uncommenting the test in src/test/java/net/praqma/codeacademy/gildedrose/GildedRoseTest.java
+* Make a new commit, commenting the test in src/test/java/net/praqma/codeacademy/gildedrose/GildedRoseTest.java
 * Push that change to GitHub, and monitor as Jenkins starts a build automatically.
 * Note that the build fails (because the test is failing) _this is OK_.
 
