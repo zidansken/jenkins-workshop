@@ -53,11 +53,6 @@ legendary item and as such its Quality is 80 and it never alters.
 
 Before this task, we expect you to have been through the basic Jenkins material and have the infrastructure set up from that. 
 
-In order for this to work, you need to install both maven and JDK on your agent.
-Log into the agen, and type the following:
-```
-sudo apt install maven openjdk-8-jdk
-```
 
 # Exercises:
 
@@ -105,7 +100,7 @@ Finished: SUCCESS
 ### 2. Running a maven test
 
 * Click on the `Back to Project` button, and go in and `Configure` the job again.
-* Under the `Build` section, add an `Invoke top-level Maven targets` step and write `test` in it. That will trigger the maven test goal on the project, compiling the java code and running the unit tests.
+* Under the `Build` section, add an `Execute Shell` step and write `docker run -i --rm --name my-maven-project -v "$PWD":/usr/src/mymaven -w /usr/src/mymaven maven:3-jdk-8 mvn test` in it. That will trigger the maven test goal on the project, compiling the java code and running the unit tests.
 * Click save, and build now once more.
 * Go into the console output like last time, and see that maven now actually runs your tests.
 
