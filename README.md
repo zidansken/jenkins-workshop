@@ -53,6 +53,10 @@ legendary item and as such its Quality is 80 and it never alters.
 
 Before this task, we expect you to have been through the basic Jenkins material and have the infrastructure set up from that. 
 
+We also at this point need to make sure that jenkins is a member of the docker group so it can execute docker commands
+
+    sudo usermod -aG docker jenkins
+    sudo systemctl restart jenkins
 
 # Exercises:
 
