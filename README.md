@@ -183,7 +183,15 @@ Fortunately that can be done with a small `mvn site` command.
 * Archive the `target/gildedrose-*.jar` as well
 
 ### 8. Dockerize this
-We 
+Now we have a fully functional pipeline, but it's not very nice to run `mvn` commands directly on the Jenkins machine. These commands can be run inside a docker container and produce the exact same result. Then we won't need to worry about installing and managing Maven versions on our virtual machine.
+
+* Convert your `mvn` steps to run inside docker containers
+
+Hints
+* Use the `maven:3-jdk-8` docker image
+* Use `-i` instead of `-d`. We want to be in interactive mode, and wait for the command to execute.
+* `$PWD` will give you the path to the current directory. If you mount the current directory into the container and execute the command in that volume, it will be the same as running the command locally on the machine. To achieve this, add the following to your `docker run` command: `-v $PWD:/usr/src/mymaven -w /usr/src/mymaven`
+* Add `--rm` to your `docker run` command to make it delete itself when done executing. This is how you avoid old stopped containers filling up on the machine.
 
 ### 9. Multibranch pipeline
 There is a file in this repository called Jenkinsfile
