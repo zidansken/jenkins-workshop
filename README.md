@@ -179,7 +179,7 @@ We also need to get the javadoc generated for the project.
 
 Fortunately that can be done with a small `mvn site` command.
 
-* Create another step called `Javadoc` where you execute the above command, and archive the result in the `target/javadoc` folder.
+* Create another stage called `Javadoc` where you execute the above command, and archive the result in the `target/javadoc` folder.
 * Archive the `target/gildedrose-*.jar` as well
 
 ### 8. Dockerize this
