@@ -131,7 +131,7 @@ Our Java project needs to be packaged into a Jar file, in order to be ready for 
 * Push the change to GitHub, and monitor that Jenkins will grab that change and make a build, producing an artifact.
 
 ### 4.5 Implementing the Gilded Rose
-Look in src/test/java/net/praqma/codeacademy/gildedrose/TexttestFixture.java for examples of items to use for tests.
+Look in  `src/test/java/net/praqma/codeacademy/TexttestFixture.java` for examples of items to use for tests.
 * Make a test and push it, observe it failing
 * Make changes to pass the test and push them, observe as only working code are built to production
 
