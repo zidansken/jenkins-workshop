@@ -15,3 +15,6 @@ public class GildedRoseTest {
     }
 
 }
+
+
+print("hep") 
