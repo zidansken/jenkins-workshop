@@ -51,7 +51,7 @@ legendary item and as such its Quality is 80 and it never alters.
 
 # Setup
 
-Before this task, we expect you to have been through the basic Jenkins material and have the infrastructure set up from that. 
+Before this task, we expect you to have been through the basic Jenkins material and have the infrastructure set up from that.
 
 We also at this point need to make sure that jenkins is a member of the docker group so it can execute docker commands
 
@@ -131,14 +131,14 @@ Our Java project needs to be packaged into a Jar file, in order to be ready for 
 * Push the change to GitHub, and monitor that Jenkins will grab that change and make a build, producing an artifact.
 
 ### 4.5 Implementing the Gilded Rose
-Look in  `src/test/java/net/praqma/codeacademy/TexttestFixture.java` for examples of items to use for tests.
+Look in  `src/test/java/net/praqma/codeacademy/gildedrose/TexttestFixture.java` for examples of items to use for tests.
 * Make a test and push it, observe it failing
 * Make changes to pass the test and push them, observe as only working code are built to production
 
 ### 5. Making the pipeline script work
 Now you have made a really nice pipeline in Jenkins just using the normal jobs.
 Now we want it *as code*!
- 
+
 First off, we need a new `Pipeline` job.
 
 * Click on `New Item`, choose `Pipeline` type, and give it a name.
