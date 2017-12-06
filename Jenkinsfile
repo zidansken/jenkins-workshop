@@ -4,7 +4,8 @@ node {
     stage ('Preparation'){
         echo 'Stage preparation'
         echo 'vi kloner fra Git'
-        git credentialsId: '6dda151e-9ae5-4118-8547-c51c2ceba009', url: 'git@github.com:zidansken/jenkins-workshop.git'
+        //git credentialsId: '6dda151e-9ae5-4118-8547-c51c2ceba009', url: 'git@github.com:zidansken/jenkins-workshop.git'
+        checkout scm
     }
 }
 node {
